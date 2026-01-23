@@ -6,7 +6,7 @@ This phase documents the **Organizational Mapping** for the ArcCircle enterprise
 **The "Week 1" Inspiration:**
 During my initial SAP MM classes, I learned that a successful ERP system starts with a solid Organizational Hierarchy. Instead of just navigating the software, I wanted to build the engine behind it. I used those SAP concepts to design my own custom enterprise structure for **ArcCircle**, which served as the mandatory foundation for all the SQL code in this repository.
 
-![ArcCircle Enterprise Structure](Org_Structure_Diagram.png)
+![ArcCircle Enterprice_Data_Master.xlsx](Org_Structure_Diagram.png)
 
 ---
 
