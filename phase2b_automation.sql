@@ -14,6 +14,7 @@ END$$
 DELIMITER ;
 
 
+
 DELIMITER $$
 create trigger before_sales_insert
 before insert on sales_orders
@@ -32,6 +33,7 @@ END if;
 END$$
 DELIMITER ;
 -- Before Sales Trigger — Stock Validation
+
 
 
 DELIMITER $$
