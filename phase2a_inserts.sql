@@ -33,6 +33,7 @@ values
 (302,103,202,'ARC_PL02',500,'2024-04-05',14,'Received');
 
 
+
 insert into Sales_Orders
 (so_id, product_id, plant_id, storage_location, quantity, sale_date, region)
 values
