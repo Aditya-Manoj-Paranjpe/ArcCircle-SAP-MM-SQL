@@ -14,6 +14,7 @@ During my initial SAP MM classes, I learned that a successful ERP system starts 
 Based on my **ORG STRUC BLUEPRINT**, the enterprise is built on three parallel functional pillars under a single legal entity to manage the complete **Procure-to-Cash** cycle.
 
 #### **Level 1: Company Code — ARC1 (ArcCircle Retail India Pvt Ltd)**
+![ArcCircle Enterprise Structure](ArcCircle_Org_Structure_Diag.png)
 The highest legal entity level for statutory, tax, and financial reporting. All business units below this level roll up their financial valuation to **ARC1**.
 
 #### **Level 2: The Three Strategic Pillars (Parallel Mapping)**
