@@ -52,8 +52,9 @@ The technical SQL implementation is strictly governed by these blueprint rules:
 ---
 
 ###  Phase 1 Artifacts
-* [**ArcCircle Enterprice_Data_Master.xlsx**](./AArcCircle Enterprice_Data_Master.xlsx)
-* [**Org_Structure_Diagram.png**](./Org_Structure_Diagram.png)
+### 📂 Phase 1 Artifacts
+* [**ArcCircle_Enterprise_Data_Master.xlsx**](./ArcCircle_Enterprise_Data_Master.xlsx) — *Full technical configuration: Company Code, Plant, Material, and Vendor Master tables.*
+* [**ArcCircle_Org_Structure_Diag.png**](./ArcCircle_Org_Structure_Diag.png) — *Visual representation of the enterprise hierarchy and functional pillars.*
 
 ---
 
