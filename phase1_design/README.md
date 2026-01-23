@@ -10,7 +10,7 @@ During my initial SAP MM classes, I learned that a successful ERP system starts 
 
 ---
 
-### 🏢 Enterprise Organizational Hierarchy
+###  Enterprise Organizational Hierarchy
 Based on my **ORG STRUC BLUEPRINT**, the enterprise is built on three parallel functional pillars under a single legal entity to manage the complete **Procure-to-Cash** cycle.
 
 #### **Level 1: Company Code — ARC1 (ArcCircle Retail India Pvt Ltd)**
@@ -41,7 +41,7 @@ Underneath the pillars, the system is broken down into specific execution units:
 
 ---
 
-### ⚙️ Functional Business Rules (Directly from Excel Logic)
+###  Functional Business Rules (Directly from Excel Logic)
 The technical SQL implementation is strictly governed by these blueprint rules:
 
 1.  **Material Control Logic:** Materials are strictly categorized into **ROH, HALB, and FERT**. The system enforces that Raw Materials (ROH) can only be procured externally, while Finished Goods like **FG_001 (Cotton Shirt)** can be produced in-house.
@@ -50,11 +50,11 @@ The technical SQL implementation is strictly governed by these blueprint rules:
 
 ---
 
-### 📂 Phase 1 Artifacts
+###  Phase 1 Artifacts
 * [**ArcCircle_Enterprise_Blueprint.xlsx**](./ArcCircle_Enterprise_Blueprint.xlsx)
 * [**Org_Structure_Diagram.png**](./Org_Structure_Diagram.png)
 
 ---
 
-### 💡 Professional Statement
+###  Professional Statement
 > "Leveraging SAP MM organizational ideology, I engineered a scalable SQL backend that mirrors a real-world enterprise environment. My work proves the successful translation of a multi-sheet Business Blueprint into a functional database, where every trigger and constraint is designed to safeguard the integrity of the 'Procure-to-Cash' lifecycle."
