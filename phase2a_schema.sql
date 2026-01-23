@@ -1,5 +1,7 @@
 USE ArcCircle;
 
+
+
 Create table Products (
     Product_id Int primary key,
     Product_name VARCHAR(100) not null,
