@@ -52,7 +52,7 @@ The technical SQL implementation is strictly governed by these blueprint rules:
 ---
 
 ###  Phase 1 Artifacts
-* [**ArcCircle_Enterprise_Blueprint.xlsx**](./ArcCircle_Enterprise_Blueprint.xlsx)
+* [**ArcCircle Enterprice_Data_Master.xlsx**](./AArcCircle Enterprice_Data_Master.xlsx)
 * [**Org_Structure_Diagram.png**](./Org_Structure_Diagram.png)
 
 ---
