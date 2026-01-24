@@ -8,8 +8,8 @@ This project is a high-fidelity technical simulation of an **Enterprise Resource
 This project bridges the gap between **Functional SAP Business Knowledge** and **Technical Database.**
 
 ---
+####  Project Roadmap (The 3 Phases)
 
-#### 🏗️ Project Roadmap (The 3 Phases)
 
 #### [Phase 1: Business Blueprinting](./Phase1_Design)
 * **Goal:** Design the enterprise architecture before coding.
