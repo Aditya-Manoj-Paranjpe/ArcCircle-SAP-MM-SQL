@@ -18,6 +18,7 @@ having SUM(po.quantity) > 0;
 
 
 
+
 -- Report 2: Fiscal Year Sales Summary
 select
 f.fiscal_year,
