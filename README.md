@@ -9,22 +9,23 @@ This project bridges the gap between **Functional SAP Business Knowledge** and *
 
 ---
 
-#### Project Roadmap (The 3 Phases)
+#### 🏗️ Project Roadmap (The 3 Phases)
 
-#### [Phase 1: Business Blueprinting](./phase1_design/)
+#### [Phase 1: Business Blueprinting](./Phase1_Design)
 * **Goal:** Design the enterprise architecture before coding.
 * **Key Entities:** Company Code (ARC1), Operational Plants (Mumbai/Delhi), and Storage Locations.
 * **Master Data:** 13 mapped sheets covering Material Master (ROH/HALB/FERT) and Vendor Master logic.
 
-#### [Phase 2: Database Engineering & Automation](./phase2_database/)
+#### [Phase 2: Database Engineering & Automation](./Phase2_Database)
 * **Goal:** Implement a normalized schema with SAP-level data integrity.
 * **Automation:** * `BEFORE INSERT` Triggers for automated "Availability Checks" (Stock Validation).
     * `AFTER INSERT` Triggers for real-time inventory decrementing.
     * Stored Procedures for simulated Goods Receipt (GR/MIGO) and Batch Risk Detection.
 
-#### [Phase 3: Decision-Grade Analytics](./phase3_analytics/)
+#### [Phase 3: Decision-Grade Analytics](./Phase3_Analytics)
 * **Goal:** Extract business intelligence using advanced SQL.
 * **Highlights:** Vendor reliability analysis, **Window Functions** for consumption trends, and dynamic **Indian Fiscal Year** reporting.
+
 
 ---
 
