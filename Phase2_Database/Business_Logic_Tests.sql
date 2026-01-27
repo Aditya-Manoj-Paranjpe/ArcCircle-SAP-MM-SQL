@@ -1,3 +1,11 @@
+
+-- ===========================================
+-- HOW TO READ RESULTS:
+-- When you run these tests, look at the "Result Grid" in MySQL Workbench.
+-- I have labeled outputs as 'BEFORE' and 'AFTER' so you can see the 
+-- inventory changing in real-time as the triggers execute.
+-- ============================================
+
 -- ============================================
 -- Project: ArcCircle SAP-MM Enterprise Suite
 -- Purpose: Business Logic Test
