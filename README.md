@@ -56,6 +56,6 @@ To run the simulations locally and see the automation in action, execute these f
 ---
 
 ### Why this project exists?
-< "I built this project after 4 weeks of intensive SQL learning to bridge the gap between business logic and database engineering. While currently studying the SAP S/4HANA MM module, I wanted to 'peek under the hood' of how an ERP actually manages data.
+> "I built this project after 4 weeks of intensive SQL learning to bridge the gap between business logic and database engineering. While currently studying the SAP S/4HANA MM module, I wanted to 'peek under the hood' of how an ERP actually manages data.
 
 The Philosophy of ArcCircle: Procurement is a continuous cycle where every stage is an 'Arc.' Rather than attempting to replicate every minor sub-process, I strategically focused on the core pillars of the SAP MM ideology. By 'idealizing' the hierarchy and building the most critical arcs of the procurement cycle in SQL, I have demonstrated that I can identify high-risk business areas and build technical safeguards to protect them. This project is about quality of logic over quantity of stages."
