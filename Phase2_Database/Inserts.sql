@@ -19,7 +19,8 @@ insert into Inventory
 VALUES
 (101,'SL_001',500,NOW()),
 (102,'SL_001',300,NOW()),
-(103,'SL_002',800,NOW());
+(103,'SL_002',800,NOW()),
+(104,'SL_001',100,NOW());
 
 
 insert into Purchase_Orders
