@@ -47,4 +47,6 @@ To run the simulations locally and see the automation in action, execute these f
 ---
 
 ### Why this project exists?
-"I built this project to bridge the gap between SAP functional logic and technical database. While specializing in SAP MM, I wanted to deconstruct the 'logic engine' that powers supply chains by rebuilding it in SQL. This repository proves how complex business rules—like organizational hierarchy, inventory protection, and procurement constraints—can be automated and safeguarded directly at the database level."
+"I built this project after 3 weeks of intensive SQL learning to bridge the gap between business logic and database engineering. While currently studying the SAP S/4HANA MM module, I wanted to 'peek under the hood' of how an ERP actually manages data.
+
+I didn't use the SAP software for this—instead, I took the SAP Organizational Structure as an inspiration, designed a custom architecture in Excel, and then fully implemented the logic (Triggers, Stored Procedures, and Relational Schema) purely in MySQL. This project is a testament to my ability to take complex business concepts and translate them into functional, automated code."
