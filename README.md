@@ -4,7 +4,7 @@
 
 ---
 
-### The Philosophy of ArcCircle: Procurement is a continuous cycle where every stage is an 'Arc.' Rather than attempting to replicate every minor sub-process, I strategically focused on the core pillars of the SAP MM ideology. By 'idealizing' the hierarchy and building the most critical arcs of the procurement cycle in SQL, I have demonstrated that I can identify high-risk business areas and build technical safeguards to protect them. This project is about quality of logic over quantity of stages."
+**The Philosophy of ArcCircle** : "Procurement is a continuous cycle where every stage is an 'Arc.' Rather than attempting to replicate every minor sub-process, I strategically focused on the core pillars of the SAP MM ideology. By 'idealizing' the hierarchy and building the most critical arcs of the procurement cycle in SQL, I have demonstrated that I can identify high-risk business areas and build technical safeguards to protect them. This project is about quality of logic over quantity of stages."
 
 ---
 
