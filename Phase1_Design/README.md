@@ -5,7 +5,7 @@ ArcCircle represents the belief that procurement is a continuous loop, not a lin
 
 ---
 
-## The Blueprinting Process (Phase 1)
+**The Blueprinting Process (Phase 1)**
 In the first week of my SQL journey, I used SAP S/4HANA (MM) as a framework to design the system logic. Before writing any code, I architected the enterprise in Excel to solve complex data relationships:
 1. Hierarchical Integrity: Mapping Plants and Storage Locations under a unified Company Code.
 2. Functional Linking: Bridging the gap between Purchasing (Inbound) and Sales (Outbound).
