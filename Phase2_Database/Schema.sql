@@ -1,18 +1,15 @@
 USE ArcCircle;
 
 
-
 Create table Products (
     Product_id Int primary key,
     Product_name VARCHAR(100) not null,
-    category varchar(50),
-    Unit_price decimal(10,2) check (Unit_price > 0),
-    Plant_id varchar(10),              -- SAP Plant
-    created_date datetime default current_timestamp
+    category VARCHAR(50),
+    Unit_price DECIMAL(10,2) check (Unit_price > 0),
+    Plant_id VARCHAR(10),
+    created_date DATETIME default current_timestamp,
+    material_type ENUM('Raw','Semi-finished','Finished')
 );
--- Add material classification
-alter table Products
-add material_type enum('RAW','SEMI_FINISHED','FINISHED');
 
 
 create table Vendors (
