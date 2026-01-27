@@ -7,11 +7,11 @@ This project is the culmination of 4 weeks of intensive SQL study, where I decon
 
 While learning SAP S/4HANA (MM Module), I was fascinated by how it manages complex data. I decided to build my own "logic engine" from scratch by:
 
-Blueprinting: Designing the organizational hierarchy (Company Code, Plants, Storage Locations) in Excel.
+1.Blueprinting: Designing the organizational hierarchy (Company Code, Plants, Storage Locations) in Excel.
 
-Architecting: Translating that business blueprint into a normalized MySQL database.
+2.Architecting: Translating that business blueprint into a normalized MySQL database.
 
-Automating: Programming the same "Availability Checks" and "Goods Receipt" logic found in SAP directly into the database using Triggers and Stored Procedures.
+3.Automating: Programming the same "Availability Checks" and "Goods Receipt" logic found in SAP directly into the database using Triggers and Stored Procedures.
 
 This project demonstrates my ability to bridge the gap between **Functional SAP Business Knowledge and Technical SQL Engineering.**
 
