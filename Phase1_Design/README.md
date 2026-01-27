@@ -1,7 +1,9 @@
-### Phase 1: SAP MM & SD Business Blueprint (ArcCircle)
+### Phase 1: SAP MM Business Blueprint (ArcCircle)
 
 ### Project Concept
-This phase documents the **Organizational Mapping** for the ArcCircle enterprise. I have translated the SAP MM Organizational Hierarchy—learned during my SAP training—into a functional blueprint for a high-performance MySQL database.
+This phase documents the Architectural Planning for the ArcCircle enterprise. Over the first week of my SQL journey, I used SAP S/4HANA (MM) as a conceptual framework to design a logical business hierarchy.
+
+Rather than jumping straight into code, I "blueprinted" the enterprise in Excel to ensure the database would handle complex business relationships—such as multiple plants under one company code and the link between purchasing and sales.
 
 ---
 
@@ -29,4 +31,4 @@ The highest legal entity for financial consolidation and statutory reporting. In
 ---
 
 ### Professional Statement
-> "Leveraging SAP MM ideology, I engineered a scalable SQL backend that mirrors a real-world enterprise. This Phase proves the successful translation of a Business Blueprint into a functional database structure, where every constraint is designed to safeguard the integrity of the 'Procure-to-Cash' lifecycle."
+> "In this phase, I translated SAP's enterprise ideology into a custom business architecture. By planning the hierarchy in Excel first, I ensured that the resulting SQL database wasn't just a collection of tables, but a functional engine capable of safeguarding the 'Procure-to-Cash' lifecycle. This demonstrates my ability to lead with business logic before executing with technical code."
