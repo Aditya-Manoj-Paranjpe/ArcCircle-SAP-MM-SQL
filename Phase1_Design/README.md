@@ -31,4 +31,4 @@ The highest legal entity for financial consolidation and statutory reporting. In
 ---
 
 ### Professional Statement
-< "In this phase, I translated SAP's enterprise ideology into a custom business architecture. By planning the hierarchy in Excel first, I ensured that the resulting SQL database wasn't just a collection of tables, but a functional engine capable of safeguarding the 'Procure-to-Cash' lifecycle. This demonstrates my ability to lead with business logic before executing with technical code." 
+> "In this phase, I translated SAP's enterprise ideology into a custom business architecture. By planning the hierarchy in Excel first, I ensured that the resulting SQL database wasn't just a collection of tables, but a functional engine capable of safeguarding the 'Procure-to-Cash' lifecycle. This demonstrates my ability to lead with business logic before executing with technical code." >
