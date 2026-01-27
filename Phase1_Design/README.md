@@ -1,9 +1,15 @@
 ### Phase 1: SAP MM Business Blueprint (ArcCircle)
 
 ### Project Concept
-This phase documents the Architectural Planning for the ArcCircle enterprise. Over the first week of my SQL journey, I used SAP S/4HANA (MM) as a conceptual framework to design a logical business hierarchy.
+ArcCircle represents the belief that procurement is a continuous loop, not a linear path. Every business stage—from Vendor Sourcing to Inventory Management—is a single "Arc." When these arcs are engineered with precision and connected, they complete the "Circle" of a functional enterprise lifecycle.
 
-Rather than jumping straight into code, I "blueprinted" the enterprise in Excel to ensure the database would handle complex business relationships—such as multiple plants under one company code and the link between purchasing and sales.
+---
+
+## The Blueprinting Process (Phase 1)
+In the first week of my SQL journey, I used SAP S/4HANA (MM) as a framework to design the system logic. Before writing any code, I architected the enterprise in Excel to solve complex data relationships:
+1. Hierarchical Integrity: Mapping Plants and Storage Locations under a unified Company Code.
+2. Functional Linking: Bridging the gap between Purchasing (Inbound) and Sales (Outbound).
+3. Data Mapping: Designing 13 Master Data sheets to ensure a "data-ready" schema implementation.
 
 ---
 
