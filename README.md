@@ -3,9 +3,18 @@
 **SAP-style Retail Inventory & Procurement System built in MySQL**
 
 #### Project Overview
-This project is a high-fidelity technical simulation of an **Enterprise Resource Planning (ERP)** backend. I have translated the complex organizational hierarchy of **SAP Materials Management (MM)** into a high-performance **MySQL** database. 
+This project is the culmination of 4 weeks of intensive SQL study, where I deconstructed the backend logic of an Enterprise Resource Planning (ERP) system.
 
-This project bridges the gap between **Functional SAP Business Knowledge** and **Technical Database.**
+While learning SAP S/4HANA (MM Module), I was fascinated by how it manages complex data. I decided to build my own "logic engine" from scratch by:
+
+Blueprinting: Designing the organizational hierarchy (Company Code, Plants, Storage Locations) in Excel.
+
+Architecting: Translating that business blueprint into a normalized MySQL database.
+
+Automating: Programming the same "Availability Checks" and "Goods Receipt" logic found in SAP directly into the database using Triggers and Stored Procedures.
+
+This project demonstrates my ability to bridge the gap between **Functional SAP Business Knowledge and Technical SQL Engineering.**
+
 
 ---
 ####  Project Roadmap (The 3 Phases)
