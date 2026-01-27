@@ -32,7 +32,7 @@ This project bridges the gap between **Functional SAP Business Knowledge** and *
 To run the simulations locally and see the automation in action, execute these files in your MySQL Workbench in the following order:
 
 1. **Build Schema:** Run [Schema.sql](./Phase2_Database/Schema.sql) to create the enterprise architecture.
-2. **Load Master Data:** Run [Insert.sql](./Phase2_Database/Insert.sql) to populate materials, vendors, and initial stock.
+2. **Load Master Data:** Run [Inserts.sql](./Phase2_Database/Inserts.sql) to populate materials, vendors, and initial stock.
 3. **Enable Automation:** Run [Automation_Logic.sql](./Phase2_Database/Automation_Logic.sql) to install the triggers and stored procedures.
 4. **Execute Tests:** Run [Business_Logic_Tests.sql](./Phase2_Database/Business_Logic_Tests.sql) to simulate sales, goods receipts, and stock risk alerts.
 
