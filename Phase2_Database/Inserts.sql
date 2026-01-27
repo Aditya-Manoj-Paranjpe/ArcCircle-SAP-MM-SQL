@@ -26,7 +26,7 @@ insert into Purchase_Orders
 (po_id, product_id, vendor_id, plant_id, quantity, order_date, delivery_days, status)
 values
 (301,101,201,'ARC_PL01',200,DATE_SUB(CURDATE(),interval 10 day),7,'Received'),
-(302,102,201,'ARC_PL02',500,DATE_SUB(CURDATE(),interval 10 day),14,'Received'),
+(302,102,201,'ARC_PL01',500,DATE_SUB(CURDATE(),interval 10 day),14,'Received'),
 (303,103,202,'ARC_PL01',300,DATE_SUB(CURDATE(),interval 10 day),7,'Received');
 
 
