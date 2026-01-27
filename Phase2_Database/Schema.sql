@@ -40,7 +40,7 @@ create table Purchase_Orders (
     quantity int check (quantity > 0),
     order_date date,
     delivery_days int,
-    status VARCHAR(20) CHECK (status in ('ORDERED','RECEIVED')),
+    status VARCHAR(20) CHECK (status in ('Ordered','Received')),
     foreign key (product_id) references Products(product_id),
     foreign key (vendor_id) references Vendors(vendor_id)
 );
