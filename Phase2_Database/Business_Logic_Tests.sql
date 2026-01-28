@@ -25,13 +25,13 @@ USE ArcCircle;
 START TRANSACTION;
 
 -- View stock before
-SELECT 'BEFORE' as Status, quantity FROM Inventory WHERE product_id = 101 AND storage_location = 'SL_001';
+select 'BEFORE' as Status, quantity from Inventory where product_id = 101 and storage_location = 'SL_001';
 
-INSERT INTO Sales_Orders (so_id, product_id, plant_id, storage_location, quantity, sale_date, region)
-VALUES (501, 101, 'ARC_PL01', 'SL_001', 50, CURDATE(), 'North');
+Insert into Sales_Orders (so_id, product_id, plant_id, storage_location, quantity, sale_date, region)
+values (501, 101, 'ARC_PL01', 'SL_001', 50, CURDATE(), 'North');
 
 -- View stock after (Should be 50 units less)
-SELECT 'AFTER' as Status, quantity FROM Inventory WHERE product_id = 101 AND storage_location = 'SL_001';
+select 'AFTER' as Status, quantity from Inventory where product_id = 101 AND storage_location = 'SL_001';
 
 ROLLBACK; -- Undo changes for repeat testing
 
@@ -44,8 +44,8 @@ ROLLBACK; -- Undo changes for repeat testing
 START TRANSACTION;
 
 -- This statement should fail with: "Insufficient stock for sales order"
-INSERT INTO Sales_Orders (so_id, product_id, plant_id, storage_location, quantity, sale_date, region)
-VALUES (502, 102, 'ARC_PL01', 'SL_001', 1000, CURDATE(), 'West');
+insert into Sales_Orders (so_id, product_id, plant_id, storage_location, quantity, sale_date, region)
+values (502, 102, 'ARC_PL01', 'SL_001', 1000, CURDATE(), 'West');
 
 ROLLBACK;
 
@@ -57,12 +57,12 @@ ROLLBACK;
 -- ---------------------------------------------------------
 START TRANSACTION;
 
-SELECT 'BEFORE' as Status, quantity FROM Inventory WHERE product_id = 103 AND storage_location = 'SL_002';
+select 'BEFORE' as Status, quantity from Inventory where product_id = 103 and storage_location = 'SL_002';
 
 -- Simulate Goods Receipt
-CALL update_inventory_po(103, 'SL_002', 100);
+call update_inventory_po(103, 'SL_002', 100);
 
-SELECT 'AFTER' as Status, quantity FROM Inventory WHERE product_id = 103 AND storage_location = 'SL_002';
+select 'AFTER' as Status, quantity from Inventory where product_id = 103 AND storage_location = 'SL_002';
 
 ROLLBACK;
 
@@ -74,10 +74,10 @@ ROLLBACK;
 START TRANSACTION;
 
 -- Force a low stock scenario
-UPDATE Inventory SET quantity = 45 WHERE product_id = 101 AND storage_location = 'SL_001';
+update Inventory set quantity = 45 where product_id = 101 and storage_location = 'SL_001';
 
 -- Run Risk Analysis Procedure
-CALL stock_risk_check();
+call stock_risk_check();
 
 ROLLBACK;
 
