@@ -33,7 +33,8 @@ This project demonstrates my ability to bridge the gap between **Functional SAP 
 
 #### [Phase 2: Database Engineering & Automation](./Phase2_Database)
 * **Goal:** Implement a normalized schema with SAP-level data integrity.
-* **Automation:** * `BEFORE INSERT` Triggers for automated "Availability Checks" (Stock Validation).
+* **Automation:** :
+    * `BEFORE INSERT` Triggers for Stock   Validation).
     * `AFTER INSERT` Triggers for real-time inventory decrementing.
     * Stored Procedures for simulated Goods Receipt (GR/MIGO) and Batch Risk Detection.
 
