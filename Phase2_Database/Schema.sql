@@ -1,58 +1,73 @@
 USE ArcCircle;
 
-
+-- =========================
+-- PRODUCTS (Material Master)
+-- =========================
 Create table Products (
-    Product_id Int primary key,
-    Product_name VARCHAR(100) not null,
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
     category VARCHAR(50),
-    Unit_price DECIMAL(10,2) check (Unit_price > 0),
-    Plant_id VARCHAR(10),
-    created_date DATETIME default current_timestamp,
+    unit_price DECIMAL(10,2) CHECK (unit_price > 0),
+    plant_id VARCHAR(10),
+    created_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     material_type ENUM('Raw','Semi-finished','Finished')
 );
 
 
-create table Vendors (
-    Vendor_id int primary key,
-    Vendor_name varchar(100) not null,
-    Country varchar(50),
-    Purchasing_Org varchar(10),       -- SAP Purchasing Org
-    lead_time_days int check (lead_time_days > 0)
+-- =========================
+-- VENDORS (Business Partner)
+-- =========================
+CREATE TABLE Vendors (
+    vendor_id INT AUTO_INCREMENT PRIMARY KEY,
+    vendor_name VARCHAR(100) NOT NULL,
+    country VARCHAR(50),
+    purchasing_org VARCHAR(10),   -- SAP Purchasing Org
+    lead_time_days INT CHECK (lead_time_days > 0)
 );
 
 
-create table Inventory (
-    product_id int,
-    storage_location varchar(20),
-    quantity int check (quantity >= 0),
-    last_updated datetime,
-    primary key (product_id, storage_location),
-    constraint fk_inv_product
-        foreign key(product_id) references Products(product_id)
+-- =========================
+-- INVENTORY (Stock Table)
+-- =========================
+CREATE TABLE Inventory (
+    product_id INT,
+    storage_location VARCHAR(20),
+    quantity INT CHECK (quantity >= 0),
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (product_id, storage_location),
+    CONSTRAINT fk_inv_product
+        FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+
+-- =========================
+-- PURCHASE ORDERS
+-- =========================
+CREATE TABLE Purchase_Orders (
+    po_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    vendor_id INT,
+    plant_id VARCHAR(10),
+    quantity INT CHECK (quantity > 0),
+    order_date DATE DEFAULT (CURRENT_DATE),
+    delivery_days INT,
+    status VARCHAR(20) CHECK (status IN ('Ordered','Received')),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id),
+    FOREIGN KEY (vendor_id) REFERENCES Vendors(vendor_id)
 );
 
 
-create table Purchase_Orders (
-    po_id int primary key,
-    product_id int,
-    vendor_id int,
-    plant_id varchar(10),
-    quantity int check (quantity > 0),
-    order_date date,
-    delivery_days int,
-    status VARCHAR(20) CHECK (status in ('Ordered','Received')),
-    foreign key (product_id) references Products(product_id),
-    foreign key (vendor_id) references Vendors(vendor_id)
-);
-
-
-create table Sales_Orders (
-    so_id int primary key,
-    product_id int,
-    plant_id varchar(10),
-    storage_location varchar(10),
-    quantity int check (quantity > 0),
-    sale_date date,
+-- =========================
+-- SALES ORDERS
+-- =========================
+CREATE TABLE Sales_Orders (
+    so_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    plant_id VARCHAR(10),
+    storage_location VARCHAR(10),
+    quantity INT CHECK (quantity > 0),
+    sale_date DATE DEFAULT (CURRENT_DATE),
     region VARCHAR(50),
-    foreign key (product_id) references Products(product_id)
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
+
+
