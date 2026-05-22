@@ -1,4 +1,4 @@
--- Report 1: Vendor Performance analysis(Procurement Intelligence)
+-- Report 1- Vendor Performance analysis(Procurement Intelligence)
 -- Business Question(Which vendors are reliable and how efficiently are they supplying materials?)
 Select
 v.vendor_id,
@@ -10,7 +10,7 @@ Avg(po.delivery_days) as avg_delivery_days
 from vendors v
 join purchase_orders po
 on v.vendor_id = po.vendor_id
-where po.status = 'RECEIVED'
+where po.status = 'Received'
 Group by v.vendor_id, v.vendor_name, v.country
 having SUM(po.quantity) > 0;
 -- What this shows : Vendor contribution, Delivery efficiency,Dependency risk.
@@ -34,10 +34,34 @@ order by f.fiscal_year, total_quantity_sold DESC;
 
 
 
+-- Report 3: Slow Moving/ Dead Stock Detection(Inventory optimization)
+-- Question: Which products are sitting in inventory without recent sales?
+-- Logic: Find last sale date per product, Compare against today, Flag risk
+select
+p.product_id,
+p.product_name,
+i.storage_location,
+i.quantity,
+MAX(s.sale_date) AS last_sale_date,
+DATEDIFF(CURDATE(), MAX(s.sale_date)) AS days_since_last_sale
+from inventory i
+join products p
+on i.product_id = p.product_id
+left join sales_orders s
+on i.product_id = s.product_id
+group by
+p.product_id,
+p.product_name,
+i.storage_location,
+i.quantity
+having days_since_last_sale > 30
+or last_sale_date is null;
+-- What this shows:Slow-moving inventory
+-- “Slow-moving stock is detected purely through transactional analysis.
 
 
 
--- Report 3: Stock Consumption Trend(Window Function)
+-- Report 4: Stock Consumption Trend(Window Function)
 Select
 product_id,
 sale_date,
@@ -54,10 +78,10 @@ order by product_id, sale_date;
 
 
 
--- Report 4: Region wise sales Contribution
+-- Report 5 - Region wise sales Contribution
 select region,
 SUM(quantity) as total_units_sold
 from sales_orders
 group by region
 order by total_units_sold desc;
--- “Regional demand trends are derived directly from sales transactions.”
+-- “Regional demand trends are derived directly from sales transactiON
