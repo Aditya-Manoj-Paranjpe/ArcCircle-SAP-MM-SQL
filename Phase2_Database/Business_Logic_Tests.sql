@@ -17,69 +17,103 @@
 USE ArcCircle;
 -- ==============
 
--- ---------------------------------------------------------
--- TEST 1: Sales Order Success & Auto-Inventory Reduction
--- Scenario: Selling 50 units of Product 101.
--- Logic: AFTER INSERT Trigger should reduce Inventory quantity.
--- ---------------------------------------------------------
+-- =========================================
+-- TEST 1
+-- Scenario: Successful sales order posting
+-- Logic: Validates stock availability and verifies automatic inventory reduction through trigger execution.
+-- =========================================
+
 START TRANSACTION;
 
--- View stock before
-select 'BEFORE' as Status, quantity from Inventory where product_id = 101 and storage_location = 'SL_001';
+SELECT quantity 
+FROM Inventory 
+WHERE product_id = 1 AND storage_location = 'SL_001';
 
-Insert into Sales_Orders (so_id, product_id, plant_id, storage_location, quantity, sale_date, region)
-values (501, 101, 'ARC_PL01', 'SL_001', 50, CURDATE(), 'North');
+INSERT INTO Sales_Orders (product_id, plant_id, storage_location, quantity, sale_date, region)
+VALUES (1, 'ARC_PL01', 'SL_001', 50, CURDATE(), 'North');
 
--- View stock after (Should be 50 units less)
-select 'AFTER' as Status, quantity from Inventory where product_id = 101 AND storage_location = 'SL_001';
+SELECT quantity 
+FROM Inventory 
+WHERE product_id = 1 AND storage_location = 'SL_001';
 
 ROLLBACK; -- Undo changes for repeat testing
 
 
--- ---------------------------------------------------------
--- TEST 2: Sales Order Failure (Stock Protection)
--- Scenario: Attempting to sell 1000 units when only 500 exist.
--- Logic: BEFORE INSERT Trigger should throw a SIGNAL error.
--- ---------------------------------------------------------
+-- =========================================
+-- TEST 2
+-- Scenario: Sales order blocked due to insufficient stock
+-- Logic: BEFORE INSERT trigger prevents order creation when requested quantity exceeds available inventory.
+-- =========================================
+
 START TRANSACTION;
 
--- This statement should fail with: "Insufficient stock for sales order"
-insert into Sales_Orders (so_id, product_id, plant_id, storage_location, quantity, sale_date, region)
-values (502, 102, 'ARC_PL01', 'SL_001', 1000, CURDATE(), 'West');
+SELECT quantity 
+FROM Inventory 
+WHERE product_id = 2 AND storage_location = 'SL_001';
+
+INSERT INTO Sales_Orders (product_id, plant_id, storage_location, quantity, sale_date, region)
+VALUES (2, 'ARC_PL01', 'SL_001', 1000, CURDATE(), 'West');
 
 ROLLBACK;
 
 
--- ---------------------------------------------------------
--- TEST 3: Purchase Order / Goods Receipt (MIGO Simulation)
--- Scenario: Receiving 100 units from a vendor.
--- Logic: Stored Procedure should update Inventory seamlessly.
--- ---------------------------------------------------------
+-- =========================================
+-- TEST 3
+-- Scenario: Sales order for non-existent inventory location
+-- Logic: Trigger validation fails because no inventory record exists for the requested product and storage location.
+-- =========================================
+
 START TRANSACTION;
 
-select 'BEFORE' as Status, quantity from Inventory where product_id = 103 and storage_location = 'SL_002';
+SELECT * 
+FROM Inventory 
+WHERE product_id = 999 AND storage_location = 'SL_999';
 
--- Simulate Goods Receipt
-call update_inventory_po(103, 'SL_002', 100);
-
-select 'AFTER' as Status, quantity from Inventory where product_id = 103 AND storage_location = 'SL_002';
+INSERT INTO Sales_Orders (product_id, plant_id, storage_location, quantity, sale_date, region)
+VALUES (999, 'ARC_PL01', 'SL_999', 1, CURDATE(), 'North');
 
 ROLLBACK;
 
 
--- ---------------------------------------------------------
--- TEST 4: Stock Risk Alert (Safety Stock Logic)
--- Scenario: Checking which items are below the safety threshold.
--- ---------------------------------------------------------
+
+-- =========================================
+-- TEST 4
+-- Scenario: Purchase order inventory replenishment
+-- Logic: Stored procedure updates inventory automatically after simulated goods receipt posting.
+-- =========================================
+
 START TRANSACTION;
 
--- Force a low stock scenario
-update Inventory set quantity = 45 where product_id = 101 and storage_location = 'SL_001';
+SELECT quantity 
+FROM Inventory 
+WHERE product_id = 3 AND storage_location = 'SL_002';
 
--- Run Risk Analysis Procedure
-call stock_risk_check();
+CALL update_inventory_po(3, 'SL_002', 100);
+
+SELECT quantity 
+FROM Inventory 
+WHERE product_id = 3 AND storage_location = 'SL_002';
 
 ROLLBACK;
+
+
+-- =========================================
+-- TEST 5
+-- Scenario: Low inventory risk detection
+-- Logic: Stock monitoring procedure identifies products below reorder threshold and generates alert messages.
+-- =========================================
+
+START TRANSACTION;
+
+UPDATE Inventory
+SET quantity = 50
+WHERE product_id = 1 AND storage_location = 'SL_001';
+
+CALL stock_risk_check();
+
+ROLLBACK;
+
+SELECT * FROM Inventory WHERE quantity < 100;
 
 
 -- ---------------------------------------------------------
