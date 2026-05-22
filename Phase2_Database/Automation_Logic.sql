@@ -1,38 +1,42 @@
 DELIMITER $$
-create procedure update_inventory_po (
-in p_product_id int,
-in p_storage_location varchar(10),
-in p_quantity int
+CREATE PROCEDURE update_inventory_po (
+    IN p_product_id INT,
+    IN p_storage_location VARCHAR(10),
+    IN p_quantity INT
 )
-begin
-update inventory
-set quantity = quantity + p_quantity,
-last_updated = NOW()
-where product_id = p_product_id
-and storage_location = p_storage_location;
+BEGIN
+    INSERT INTO inventory (product_id, storage_location, quantity, last_updated)
+    VALUES (p_product_id, p_storage_location, p_quantity, NOW())
+    ON DUPLICATE KEY UPDATE
+        quantity = quantity + p_quantity,
+        last_updated = NOW();
 END$$
 DELIMITER ;
+
+
 
 
 
 DELIMITER $$
-create trigger before_sales_insert
-before insert on sales_orders
-for each row
+CREATE TRIGGER before_sales_insert
+BEFORE INSERT ON sales_orders
+FOR EACH ROW
 BEGIN
-declare current_stock int;
-select quantity
-into current_stock
-from inventory
-where product_id = new.product_id
-and storage_location = new.storage_location;
-IF current_stock is null or current_stock < NEW.quantity then
-signal sqlstate '45000'
-set MESSAGE_TEXT = 'Insufficient stock for sales order';
-END if;
+    DECLARE current_stock INT;
+
+    SELECT quantity INTO current_stock
+    FROM inventory
+    WHERE product_id = NEW.product_id
+    AND storage_location = NEW.storage_location
+    LIMIT 1;
+
+    IF current_stock IS NULL OR current_stock < NEW.quantity THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Insufficient stock for sales order';
+    END IF;
 END$$
 DELIMITER ;
--- Before Sales Trigger — Stock Validation
+
 
 
 
@@ -52,6 +56,10 @@ DELIMITER ;
 -- AFTER SALES TRIGGER — Auto Stock Reduction
 
 
+
+
+
+
 create view fiscal_year_sales as
 select
 so_id,
@@ -64,33 +72,21 @@ then CONCAT(YEAR(sale_date), '-', YEAR(sale_date)+1)
 else CONCAT(YEAR(sale_date)-1, '-', YEAR(sale_date))
 END AS fiscal_year
 FROM sales_orders;
--- Business Rule: Indian FY: April 1 - March 31, Fiscal years are dervied dynamically 
+-- Business Rule: Indian FY: April 1 - March 31, Fiscal years are derived dynamically
+
+
+
 
 
 
 DELIMITER $$
-create procedure stock_risk_check ()
+CREATE PROCEDURE stock_risk_check ()
 BEGIN
-declare done INT DEFAULT 0;
-declare p_id INT;
-declare cur CURSOR FOR
-select product_id from inventory where quantity < 100;
-declare continue handler for not found set done = 1;
-
-open cur;
-
-read_loop: while done = 0 do
-fetch cur into p_id;
-
-if done = 1 then
-leave read_loop;
-END IF;
-
--- Business action placeholder
-select CONCAT('Reorder required for product ', p_id) as alert;
-END WHILE;
-
-close cur;
+    SELECT 
+        product_id,
+        quantity,
+        CONCAT('Reorder required for product ', product_id) AS alert
+    FROM inventory
+    WHERE quantity < 100;
 END$$
-
 DELIMITER ;
